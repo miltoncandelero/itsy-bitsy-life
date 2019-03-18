@@ -1,0 +1,47 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "command": "dotnet",
+    "args": [],
+    "tasks":
+    [
+        {
+			"label": "Build HTML5 Debug",
+			"command": "haxelib",
+			"args": ["run", "lime", "build", "html5", "-debug"],
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": "$haxe"
+        },
+
+        {
+			"label": "Build HTML5 Releaase",
+			"command": "haxelib",
+			"args": ["run", "lime", "build", "html5", "-minify"],
+			"group": "none",
+			"problemMatcher": "$haxe"
+        },
+
+        {
+			"label": "Build HTML5 Final",
+			"command": "haxelib",
+			"args": ["run", "lime", "build", "html5", "-final", "-minify"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": "$haxe"
+        },
+		{
+			"label": "Run HTML5 Server",
+			"command": "haxelib",
+			"args": ["run", "lime", "run", "html5", "-v"],
+			"group": "none",
+			"problemMatcher": "$node-sass"
+        }
+
+    ]
+}

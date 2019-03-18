@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="gblife" package="com.sample.gblife" version="1.0.0" company="Company Name" />
+	<app main="Main" path="Export" file="gblife" />
+
+	<window background="#a5a5a5" />
+	
+	<source path="Source" />
+	
+	<haxelib name="openfl" />
+	
+	<library name="default" type="zip" preload="true"/> 
+
+	<assets path="Assets" rename="assets" />
+
+	<window fullscreen="true" width="640" height="480" if="desktop" />
+
+	<haxeflag name="-dce full" />
+
+	<haxeflag name="--no-traces" unless="debug" />
+	
+</project>
