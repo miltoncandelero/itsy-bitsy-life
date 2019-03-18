@@ -36,6 +36,9 @@ class PetriDish extends Sprite {
 		for (i in 0...WIDTH) {
 			for (j in 0...HEIGHT) {
 				cells[Std.int((i % WIDTH) + (j % HEIGHT) * WIDTH)] = (rnd.random(100) < randPerc);
+				if (cells[Std.int((i % WIDTH) + (j % HEIGHT) * WIDTH)]) {
+					alive++;
+				}
 			}
 		}
 
