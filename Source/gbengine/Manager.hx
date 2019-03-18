@@ -59,8 +59,6 @@ class Manager {
 	private static var currentTime:Int = 0;
 	private static var lastTime:Int = 0;
 	private static var deltaTime:Int = 0;
-	// Color pallete
-	public static var PALLETE:Array<Int> = [0x9bbc0f, 0x8bac0f, 0x306230, 0x0f380f];
 
 	public function new() {}
 

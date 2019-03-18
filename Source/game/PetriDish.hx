@@ -3,6 +3,7 @@ package game;
 import openfl.display.Bitmap;
 import openfl.display.BitmapData;
 import gbengine.Manager;
+import gbengine.GBHelper;
 import haxe.ds.Vector;
 import openfl.display.Sprite;
 
@@ -14,6 +15,8 @@ class PetriDish extends Sprite {
 	public var alive:Int = 0;
 	public var deathCount:Int = 0;
 	public var generation:Int = 0;
+	public var seed:Int;
+	public var spawnRate:Int;
 	public var bornRule:Array<Int> = [3];
 	public var surviveRule:Array<Int> = [2, 3];
 	public var cells:Vector<Bool>;
@@ -28,6 +31,8 @@ class PetriDish extends Sprite {
 			this.bornRule = bornRule;
 		if (surviveRule != null)
 			this.surviveRule = surviveRule;
+		this.seed = randSeed;
+		this.spawnRate = randPerc;
 
 		cells = new Vector<Bool>(14000);
 		var rnd = new PCG32();
@@ -97,9 +102,9 @@ class PetriDish extends Sprite {
 		// Vector rendering
 		/*
 			graphics.clear();
-			graphics.beginFill(Manager.PALLETE[0]);
+			graphics.beginFill(GBHelper.PALLETE[0]);
 			graphics.drawRect(0, 0, WIDTH, HEIGHT);
-			graphics.beginFill(Manager.PALLETE[3]);
+			graphics.beginFill(GBHelper.PALLETE[3]);
 			for (i in 0...WIDTH) {
 				for (j in 0...HEIGHT) {
 					if (cell(i, j) == 1) {
@@ -109,11 +114,11 @@ class PetriDish extends Sprite {
 			}
 		 */
 		// bitmap rendering
-		var bmdata = new BitmapData(WIDTH, HEIGHT, false, Manager.PALLETE[0]);
+		var bmdata = new BitmapData(WIDTH, HEIGHT, false, GBHelper.PALLETE[0]);
 		for (i in 0...WIDTH) {
 			for (j in 0...HEIGHT) {
 				if (cell(i, j) == 1) {
-					bmdata.setPixel(i, j, Manager.PALLETE[3]);
+					bmdata.setPixel(i, j, GBHelper.PALLETE[3]);
 				}
 			}
 		}
