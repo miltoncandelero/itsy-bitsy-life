@@ -11,9 +11,13 @@ class IntroScene extends BaseScene {
 
 	public function new() {
 		super();
-		graphics.beginFill(0x0);
+		graphics.beginFill(Manager.PALLETE[1]);
 		graphics.drawRect(0, 0, Manager.WIDTH, Manager.HEIGHT);
+		graphics.beginFill(Manager.PALLETE[2]);
+		graphics.drawRect(57, 1, PetriDish.WIDTH + 2, PetriDish.HEIGHT + 2);
 		pd = new PetriDish(Std.int(Lib.getTimer() * 1000 * Math.random()), 10, [3], [2, 3]);
+		pd.y = 2;
+		pd.x = 58;
 		addChild(pd);
 	}
 
