@@ -12,6 +12,7 @@ class UserSettings {
 	public static var START:Int = Keyboard.ENTER;
 	public static var SELECT:Int = Keyboard.BACKSPACE;
 	public static var GAME_SPEED:Float = 1;
+	public static var PALETTE = GBHelper.PALETTE;
 
 	public function new() {}
 }

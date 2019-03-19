@@ -6,6 +6,7 @@ import gbengine.Manager;
 import gbengine.GBHelper;
 import haxe.ds.Vector;
 import openfl.display.Sprite;
+import gbengine.UserSettings;
 
 class PetriDish extends Sprite {
 	public static inline var WIDTH:Int = 100;
@@ -102,9 +103,9 @@ class PetriDish extends Sprite {
 		// Vector rendering
 		/*
 			graphics.clear();
-			graphics.beginFill(GBHelper.PALLETE[0]);
+			graphics.beginFill(UserSettings.PALETTE[0]);
 			graphics.drawRect(0, 0, WIDTH, HEIGHT);
-			graphics.beginFill(GBHelper.PALLETE[3]);
+			graphics.beginFill(UserSettings.PALETTE[3]);
 			for (i in 0...WIDTH) {
 				for (j in 0...HEIGHT) {
 					if (cell(i, j) == 1) {
@@ -114,11 +115,11 @@ class PetriDish extends Sprite {
 			}
 		 */
 		// bitmap rendering
-		var bmdata = new BitmapData(WIDTH, HEIGHT, false, GBHelper.PALLETE[0]);
+		var bmdata = new BitmapData(WIDTH, HEIGHT, false, UserSettings.PALETTE[0]);
 		for (i in 0...WIDTH) {
 			for (j in 0...HEIGHT) {
 				if (cell(i, j) == 1) {
-					bmdata.setPixel(i, j, GBHelper.PALLETE[3]);
+					bmdata.setPixel(i, j, UserSettings.PALETTE[3]);
 				}
 			}
 		}

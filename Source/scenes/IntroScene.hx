@@ -1,9 +1,11 @@
 package scenes;
 
+import gbengine.UserSettings;
 import openfl.Lib;
 import gbengine.Manager;
 import gbengine.GBHelper;
 import gbengine.BaseScene;
+import gbengine.TextLabel;
 import game.PetriDish;
 
 class IntroScene extends BaseScene {
@@ -13,9 +15,9 @@ class IntroScene extends BaseScene {
 
 	public function new() {
 		super();
-		graphics.beginFill(GBHelper.PALLETE[1]);
+		graphics.beginFill(UserSettings.PALETTE[1]);
 		graphics.drawRect(0, 0, Manager.WIDTH, Manager.HEIGHT);
-		graphics.beginFill(GBHelper.PALLETE[2]);
+		graphics.beginFill(UserSettings.PALETTE[2]);
 		graphics.drawRect(57, 1, PetriDish.WIDTH + 2, PetriDish.HEIGHT + 2);
 		pd = new PetriDish(Std.int(Lib.getTimer() * 1000 * Math.random()), 10, [3], [2, 3]);
 		pd.y = 2;
@@ -25,7 +27,7 @@ class IntroScene extends BaseScene {
 		txtData = new TextLabel(true, true);
 		txtData.text = "123\n456\n789";
 		var tf = GBHelper.FORMAT_04B03;
-		tf.color = GBHelper.PALLETE[3];
+		tf.color = UserSettings.PALETTE[3];
 		txtData.defaultTextFormat = tf;
 		txtData.y = 30;
 		addChild(txtData);

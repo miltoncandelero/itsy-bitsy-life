@@ -1,4 +1,4 @@
-package;
+package gbengine;
 
 import openfl.text.TextField;
 import openfl.text.TextFieldType;

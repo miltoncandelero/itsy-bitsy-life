@@ -7,11 +7,11 @@ import openfl.text.TextFormat;
 import openfl.Assets;
 
 class GBHelper {
-	public static var PALLETE:Array<Int> = [0x9bbc0f, 0x8bac0f, 0x306230, 0x0f380f];
+	public static var PALETTE:Array<Int> = [0x9bbc0f, 0x8bac0f, 0x306230, 0x0f380f];
 	public static var FORMAT_04B03(get, never):TextFormat;
 
 	private static function get_FORMAT_04B03():TextFormat {
-		return new TextFormat("04b03", 8);
+		return new TextFormat("04b03", 8, PALETTE[3]);
 	}
 
 	/**
@@ -19,27 +19,19 @@ class GBHelper {
 	 * @param id
 	 * @return BitmapData
 	 */
-	public static function getBitmapData(id:String):BitmapData {
+	public static function getBitmapData(id:String, originalPalette:Array<Int>):BitmapData {
+		if (originalPalette == UserSettings.PALETTE)
+			return Assets.getBitmapData(id);
+
 		var aux = Assets.getBitmapData(id).clone();
 		aux.lock();
-		var palleteIntensity = PALLETE.map(function(c) {
-			return colorBrightness(new ARGB(c));
-		});
 		for (i in 0...aux.width) {
 			for (j in 0...aux.height) {
 				var c = new ARGB(aux.getPixel32(i, j));
 				if (c.a != 0xFF)
 					continue;
-				var min:Float = 1;
-				var selected = 0;
-				for (j in 0...palleteIntensity.length) {
-					if (Math.abs(palleteIntensity[j] - colorBrightness(c)) < min) {
-						min = Math.abs(palleteIntensity[j] - colorBrightness(c));
-						selected = j;
-					}
-				}
-				aux.setPixel(i, j, (PALLETE[3 - Math.round(colorBrightness(c) * (PALLETE.length - 1))]));
-				// aux.setPixel(i, j, (PALLETE[j]));
+
+				aux.setPixel(i, j, UserSettings.PALETTE[originalPalette.indexOf(aux.getPixel(i, j))]);
 			}
 		}
 		aux.unlock();
