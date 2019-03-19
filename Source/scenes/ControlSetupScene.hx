@@ -20,7 +20,7 @@ class ControlSetupScene extends BaseScene {
 		txtData = new TextLabel(true, true);
 		txtData.text = printCurrentSettings();
 		var tf = GBHelper.FORMAT_04B03;
-		tf.size = 16;
+		tf.size = 8;
 		txtData.defaultTextFormat = tf;
 		txtData.x = 16;
 		addChild(txtData);
@@ -29,6 +29,7 @@ class ControlSetupScene extends BaseScene {
 		arrow.text = "->";
 		arrow.defaultTextFormat = tf;
 		arrow.cacheAsBitmap = true;
+		arrow.y = txtData.y + 8 * tf.size;
 		addChild(arrow);
 	}
 
