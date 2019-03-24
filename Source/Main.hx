@@ -8,7 +8,7 @@ import scenes.ControlSetupScene;
 class Main extends Sprite {
 	public function new() {
 		super();
-		// Manager.changeScene(IntroScene);
-		Manager.changeScene(ControlSetupScene);
+		Manager.changeScene(IntroScene);
+		//Manager.changeScene(ControlSetupScene);
 	}
 }

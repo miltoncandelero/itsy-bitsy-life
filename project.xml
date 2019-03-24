@@ -10,7 +10,7 @@
 	
 	<haxelib name="openfl" />
 	
-	<library name="default" type="zip" preload="true"/> 
+	<library name="default" type="zip" preload="true"/>
 
 	<assets path="Assets" rename="assets" />
 

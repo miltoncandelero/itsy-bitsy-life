@@ -8,7 +8,7 @@
         {
             "type": "chrome",
             "request": "launch",
-            "preLaunchTask": "Build HTML5 Debug",
+            "preLaunchTask": "lime: build html5 -debug",
             "name": "HTML5",
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}",

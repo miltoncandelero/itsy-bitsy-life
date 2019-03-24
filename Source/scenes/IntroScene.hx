@@ -8,10 +8,13 @@ import gbengine.BaseScene;
 import gbengine.TextLabel;
 import game.PetriDish;
 
+using StringTools;
+
 class IntroScene extends BaseScene {
 	var pd:PetriDish;
 	var time:Int = 0;
 	var txtData:TextLabel;
+	var txtTitle:TextLabel;
 
 	public function new() {
 		super();
@@ -29,8 +32,15 @@ class IntroScene extends BaseScene {
 		var tf = GBHelper.FORMAT_04B03;
 		tf.color = UserSettings.PALETTE[3];
 		txtData.defaultTextFormat = tf;
-		txtData.y = 30;
+		txtData.y = 45;
 		addChild(txtData);
+
+		txtTitle = new TextLabel(true,true);
+		txtTitle.text = "Itsy\nBitsy\nLife";
+		var titleFormat = GBHelper.FORMAT_04B03;
+		titleFormat.size = 16;
+		txtTitle.defaultTextFormat = titleFormat;
+		addChild (txtTitle);
 	}
 
 	override function update(dt:Int) {
@@ -38,7 +48,7 @@ class IntroScene extends BaseScene {
 		if (time > 100) {
 			pd.advance();
 			time = 0;
-			txtData.text = "Generation\n" + pd.generation + "\n\nCurrent alive\n" + pd.alive + "\nDeath count\n" + pd.deathCount + "\n\nRand seed\n"
+			txtData.text = "Generation\n" + pd.generation + "\nBirth Rule\n" + pd.bornRule.toString().replace("[","").replace("]","") + "\nSurvive Rule\n" + pd.surviveRule.toString().replace("[","").replace("]","") + "\nCurrent alive\n" + pd.alive + "\nDeath count\n" + pd.deathCount + "\nRand seed\n"
 				+ pd.seed + "\nInit chance\n" + pd.spawnRate + "%";
 		}
 		/*if (Manager.LEFT)
